@@ -21,15 +21,17 @@ with open (csvpath,newline='') as csvfile:
     sumchange=0
     change_list=[]
     for row in csvreader:
-        #print(row)
+        #finding total vote by initialized count as 0, looping thru csvreader and start adding
         countMonth+=1
-        #Profit_losses= float(row[1])
+        #convert string into float(integer with decimals)
         Net_total+=float(row[1])
+        #adding all values in row[1] into a list called data
         data.append(row[1])
     for i in range(0,(len(data)-1)):
+        #(len(data)-1): -1 because as i+1 will be the last value
         change=float(data[i+1])-float(data[i])
         sumchange=sumchange+round(change)
-        print(change)
+        #print(change)
         change_list.append(change)
     Greatest_value=max(change_list)
     Lowest_value=min(change_list)
