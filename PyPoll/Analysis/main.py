@@ -14,7 +14,7 @@ with open (csvpath,newline='') as csvfile:
     Vote_count=0
     Totalcount_name=[]
     Candidate_names=[]
-    name=[]
+    Candidate=[]
     vote_list=[]
     i=0
     percentage=[]
@@ -25,21 +25,23 @@ with open (csvpath,newline='') as csvfile:
         Candidate_names.append(row[2])
         # add all values in 3rd row index 2 into cadidate name list
     
-    name.append(Candidate_names[0])
+    Candidate.append(Candidate_names[0])
+    #condition inital name list
     dict[Candidate_names[0]]=[] 
+    #inital dict is empty, conditioning intial as its first value
     for i in range(1,len(Candidate_names)):
-        counting_name=name.count(Candidate_names[i])
+        counting_name=Candidate.count(Candidate_names[i])
         if counting_name ==0:
-            name.append(Candidate_names[i])
+            Candidate.append(Candidate_names[i])
             #look into name list, if i name is not in list, add that name from big list into name list
             #identifying names of candidates 
             dict[Candidate_names[i]]=[]  
             
-    for j in range(0,len(name)):     
+    for j in range(0,len(Candidate)):     
             
-        Totalcount_name.append(Candidate_names.count(name[j]))
-        #inside name list, calculate total votes of each Candidate in that list
-        dict[name[j]]=Totalcount_name[j]
+        Totalcount_name.append(Candidate_names.count(Candidate[j]))
+        #inside Candidate list, calculate total votes of each Candidate in that list
+        dict[Candidate[j]]=Totalcount_name[j]
         
         percentage.append(round((Totalcount_name[j]/Vote_count)*100))
 
@@ -49,9 +51,9 @@ with open (csvpath,newline='') as csvfile:
      
          
      
-        for j in range(0,len(name)):    
-            print(f"{name[j]} {Totalcount_name[j]} {percentage[j]}")
-            outfile.write(f"{name[j]} {percentage[j]}% ({Totalcount_name[j]})\n")
+        for j in range(0,len(Candidate)):    
+            print(f"{Candidate[j]} {Totalcount_name[j]} {percentage[j]}")
+            outfile.write(f"{Candidate[j]} {percentage[j]}% ({Totalcount_name[j]})\n")
             #print(f'Winner: {winner}')
             #outfile.write(f'Winner: {winner}')
             
