@@ -34,11 +34,19 @@ with open (csvpath,newline='') as csvfile:
     Greatest_value=max(change_list)
     Lowest_value=min(change_list)
     average_change =sumchange/len(change_list)   
-    print(f'Total Month:{countMonth}')
-    print(f'Total: {Net_total}')   
-    print(f'Average Change: {average_change}')
-    print(f'Greatest value = {Greatest_value}')
-    print(f'Lowest value = {Lowest_value}')
+    
+    with open ("output.txt","w") as outfile:
+        print(f'Total Month:{countMonth}')
+        outfile.write(f'Total Month:{countMonth}\n')
+        print(f'Total: {Net_total}')  
+        outfile.write(f'Total: {Net_total}\n')
+        print(f'Average Change: {average_change}')
+        outfile.write(f'Average Change: {average_change}\n')
+        print(f'Greatest value = {Greatest_value}')
+        outfile.write(f'Greatest value = {Greatest_value}\n')
+        print(f'Lowest value = {Lowest_value}')
+        outfile.write(f'Lowest value = {Lowest_value}')
+       
     
     
     
